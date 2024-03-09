@@ -23,11 +23,6 @@ Description:
 This is a file parser and generator tool.
 """
 
-# FileParser单例
-# Observable dictionary
-# file head comments
-# submodule in github
-# upload to github
 import sys
 from utility import scan_dir
 from ignore import Ignore
