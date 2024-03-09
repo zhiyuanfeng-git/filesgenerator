@@ -1,0 +1,3 @@
+[submodule "pargen"]
+	path = pargen
+	url = https://github.com/zhiyuanfeng-git/pargen.git
