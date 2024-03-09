@@ -1,7 +1,7 @@
 # filesgenerator
 This is a file parser and generator tool. It is based on the package called [pargen](https://github.com/zhiyuanfeng-git/pargen) that I am working on. 
 
-# Description:
+# Description
 This tool is the best candidate for verifying and improving an event-driven system. As an input,reading a file could be as a 'parser action',then after parsing,generating some new files,which could perfectly explain the work of a 'generator'.
 
 Of course, it is also important to parse different files and generate new files in fixed or dynamic formats.This is also why this tool comes here.
