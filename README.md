@@ -12,6 +12,10 @@ It does not have other installations to choose from. I am now using the 'git sub
 # Usage
 Now, it only can generate some new files as a result of parsing. There are two directories, one is files that the parser will operate on. Then the generator generates some new fills that would put in the 'gens' directory.
 
+# Example
+There are some example files in the 'files' folder. The program will generate corresponding Python script files to the 'gens' folder.
+These are simple examples. Later the program would support more features.
+
 # License
 This source code is licensed under the Apache License, Version 2.0 found in the LICENSE and NOTICE file in the root directory of this source code.
 
