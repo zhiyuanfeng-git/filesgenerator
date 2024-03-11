@@ -36,3 +36,18 @@ def is_empty_file(file):
         return True
     file.seek(0, os.SEEK_SET)
     return False
+
+def find_last_point(file_name) -> None | int:
+    last_point = None
+    for i in range(len(file_name)-1, -1, -1):
+        if file_name[i] == '.':
+            last_point = i
+            break
+    return last_point
+
+def extract_file_name(file_path) -> str:
+    file_name = file_path.split("\\")[-1]
+    last_point = find_last_point(file_name)
+    if last_point is None:
+        return file_name
+    return file_name[:last_point]

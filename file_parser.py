@@ -16,7 +16,7 @@ from pargen.parsers import Parser
 from pargen.status import Status
 from singleton import Singleton
 from file_event import EventSubType
-from utility import is_empty_file,open_file_r
+from utility import is_empty_file,open_file_r,extract_file_name
 from constants import UTF8
 
 class FileParser(Parser, Singleton):
@@ -31,7 +31,7 @@ class FileParser(Parser, Singleton):
 
     def parse(self, *args) -> Status | None:
         file_path = args[0]
-        file_name = file_path.split("\\")[-1].split('.')[0]
+        file_name = extract_file_name(file_path)
         try:
             file = open_file_r(file_path, UTF8)
             if is_empty_file(file):
@@ -60,7 +60,15 @@ class FileParser(Parser, Singleton):
 
     def __parse_single(self, file):
         self._event.subType = EventSubType.SINGLE
-        self._event.data = file.read()
+        result_str = ''
+        for line in file:
+            str_line = line.strip()
+            if result_str == '':
+                result_str += str_line
+            else:
+                result_str += f'\n# {str_line}'
+
+        self._event.data = result_str
 
     def __parse_multiple(self, file):
         self._event.subType = EventSubType.MULTIPLE
