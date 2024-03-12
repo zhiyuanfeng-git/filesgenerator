@@ -40,6 +40,7 @@ class FileGenerator(Generator, Singleton, FileWriteMixin):
     @staticmethod
     def __build_file_path(file_name, suffix = None):
         if suffix:
+            suffix = suffix if suffix > 9 else f"0{suffix}"
             return f"{GENERATE_DIR}/{file_name}/{suffix}-{file_name}{PY_SUFFIX}"
         return f"{GENERATE_DIR}/{file_name}/{file_name}{PY_SUFFIX}"
 
