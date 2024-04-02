@@ -78,16 +78,17 @@ class FileParser(Parser, Singleton):
         last_ret = None
         for line in file:
             str_line = line.strip()
-            last_ret = FileParser.parse_number(str_line)
-            if type(last_ret) == int:
-                if group_line > 0:
-                    self._event.data.append(group_str)
-                    group_str = ""
+            if str_line != '':
+                last_ret = FileParser.parse_number(str_line)
+                if type(last_ret) == int:
+                    if group_line > 0:
+                        self._event.data.append(group_str)
+                        group_str = ""
 
-                group_line += 1
-                group_str += str_line
-            elif type(last_ret) == str:
-                group_str += f"\n# {str_line}"
+                    group_line += 1
+                    group_str += str_line
+                elif type(last_ret) == str:
+                    group_str += f"\n# {str_line}"
 
         if group_line > 0 and group_line > len(self._event.data):
             self._event.data.append(group_str)
